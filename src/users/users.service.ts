@@ -1,4 +1,4 @@
-import { InjectRepository } from '@nestjs/typeorm';
+import { InjectRepository,  } from '@nestjs/typeorm';
 import { Injectable } from '@nestjs/common';
 import {Repository} from 'typeorm';
 
@@ -24,9 +24,9 @@ export class UsersService {
   async update(id: number, attrs: Partial<User>){
     const user = await this.findOne(id)
     if (!user){
-      throw new Error(`User with ID[${id}] not found`)
+      return null
     }
-    console.log(user)
+
     Object.assign(user, attrs)
     return this.repo.save(user)
   }
@@ -34,7 +34,7 @@ export class UsersService {
   async remove(id: number){
     const user = await this.findOne(id)
     if (!user){
-      throw new Error(`User with ID[${id}] not found`)
+      return null
     }
 
     return this.repo.remove(user)
