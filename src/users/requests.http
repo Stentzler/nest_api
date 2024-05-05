@@ -7,3 +7,23 @@ content-type: application/json
   "email": "asd@asd.com",
   "admin": true
 }
+
+### Get One by id
+GET  http://localhost:3000/auth/4
+
+
+### Get many by mail
+GET  http://localhost:3000/auth?email=asd@asd.com
+
+
+### Delete user 
+DELETE  http://localhost:3000/auth/4
+
+### update user 
+PATCH  http://localhost:3000/auth/4
+content-type: application/json
+
+{
+  "email": "asdasd@asd.com",
+  "password": "asdasdasda"
+}
